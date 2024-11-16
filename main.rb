@@ -1,9 +1,16 @@
-require 'sinatra'
 require_relative 'dto/movie'
+require_relative 'repository/movie'
+require 'pg'
+require 'sinatra'
+
+before do
+  $conn = PG.connect("postgres://postgres:postgres@localhost:5432/my_database")
+end
 
 get '/api/movies' do
   puts "Get all movies"
-  "Get all movies"
+  content_type :json
+  get_all_movies($conn).to_json
 end
 
 post '/api/movies' do
