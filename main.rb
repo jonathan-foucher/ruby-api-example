@@ -17,10 +17,11 @@ post '/api/movies' do
   request.body.rewind
   movie = Movie.new(JSON.parse(request.body.read))
   puts "Post movie id=#{movie.id}, title='#{movie.title}' and relase_date=#{movie.release_date}"
+  save_movie($conn, movie)
   200
 end
 
 delete '/api/movies/:movieId' do |movie_id|
   puts "Delete movie with id #{movie_id}"
-  200
+  delete_movie($conn, movie_id) ? 200 : 204
 end
