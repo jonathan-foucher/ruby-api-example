@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     base64 (0.2.0)
+    dotenv (3.1.4)
     mustermann (3.0.3)
       ruby2_keywords (~> 0.0.1)
     pg (1.5.6)
@@ -27,6 +28,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dotenv (= 3.1.4)
   pg (= 1.5.6)
   rackup (= 2.2.1)
   sinatra (= 4.0.0)

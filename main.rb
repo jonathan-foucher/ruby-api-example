@@ -1,10 +1,14 @@
+require 'dotenv'
 require_relative 'dto/movie'
 require_relative 'repository/movie'
 require 'pg'
 require 'sinatra'
+require 'dotenv'
+
+Dotenv.load
 
 before do
-  $conn = PG.connect("postgres://postgres:postgres@localhost:5432/my_database")
+  $conn = PG.connect(ENV['DB_URL'])
 end
 
 get '/api/movies' do
